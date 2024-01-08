@@ -103,11 +103,23 @@ Alex did not attend any exams.
 John attended the Math exam 1 time, the Physics exam 1 time, and the Programming exam 1 time.
   """
 # Write your MySQL query statement below
-select *#T.student_id, T.student_name , B.subject_name , count(E.subject_name) as attended_exams 
-from 
-    Students as T
-    left join  Examinations as E
-    join Subjects as B
-    on T.student_id = E.student_id and B.subject_name = E.subject_name
-group by T.student_id, student_name, E.subject_name
-order by T.student_id, E.subject_name
+
+SELECT 
+    s.student_id,
+    s.student_name, 
+    sub.subject_name, 
+    COUNT(e.subject_name) AS attended_exams
+FROM 
+    Students s 
+CROSS JOIN 
+    Subjects sub
+LEFT JOIN 
+    Examinations e
+    ON s.student_id = e.student_id AND sub.subject_name = e.subject_name
+GROUP BY 
+    s.student_id, 
+    s.student_name, 
+    sub.subject_name
+ORDER BY 
+    s.student_id, 
+    sub.subject_name;
