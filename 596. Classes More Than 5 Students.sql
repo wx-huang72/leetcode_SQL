@@ -47,9 +47,9 @@ Explanation:
 - English has 1 student, so we do not include it.
 - Biology has 1 student, so we do not include it.
 - Computer has 1 student, so we do not include it.
-  ""
+"""
 
-# Write your MySQL query statement below
+# Write your MySQL query statement below (526ms,Beats 67.96% of users with MySQL)
 select class
 from Courses
 group by class
